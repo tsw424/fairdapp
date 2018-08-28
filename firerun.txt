@@ -1,0 +1,43 @@
+
+
+
+购买启动脚本
+nohup php -f /home/wwwroot/newblock/fire/buy.php > /home/firelog/buy.log 2>&1 &
+nohup php -f /home/wwwroot/newblock/fire/buy.php > /home/firelog/buy1.log 2>&1 &
+
+提现启动脚本
+nohup php -f /home/wwwroot/newblock/fire/withdraw.php > /home/firelog/withdraw.log 2>&1 &
+nohup php -f /home/wwwroot/newblock/fire/withdraw.php > /home/firelog/withdraw1.log 2>&1 &
+nohup php -f /home/wwwroot/newblock/fire/withdraw.php > /home/firelog/withdraw2.log 2>&1 &
+
+
+抢购脚本(安全起见，已将交易相关注释。启动前将/home/wwwroot/newblock/fire/fire.php文件中 buySingle($from)函数中注释部分，去掉注释符运行)
+/home/wwwroot/newblock/fire/buy.sh
+
+单个账号抢购脚本(安全起见，已将交易相关注释。启动前将/home/wwwroot/newblock/fire/fire.php文件中 buySingle($from)函数中注释部分，去掉注释符运行)
+php -f /home/wwwroot/newblock/fire/buy0x5e5f670aeb73b9be90ac41fc66b612e48749f608.php > /home/firelog/buy0x5e5f670aeb73b9be90ac41fc66b612e48749f608.log 2>&1 &
+
+php -f /home/wwwroot/newblock/fire/buy0x8ff64fa55359d19ce4f3eb5051c084321371d1ba.php > /home/firelog/buy0x8ff64fa55359d19ce4f3eb5051c084321371d1ba.log 2>&1 &
+
+php -f /home/wwwroot/newblock/fire/buy0x742f7a6273424d3b9b15e85dce2f782203d1d272.php > /home/firelog/buy0x742f7a6273424d3b9b15e85dce2f782203d1d272.log 2>&1 &
+
+php -f /home/wwwroot/newblock/fire/buy0xacb06b48640987bacfc234be930a5708d8eccbf2.php > /home/firelog/buy0xacb06b48640987bacfc234be930a5708d8eccbf2.log 2>&1 &
+
+php -f /home/wwwroot/newblock/fire/buy0xbc304368e99371dc0d6d149c3296e071f3cbb07b.php > /home/firelog/buy0xbc304368e99371dc0d6d149c3296e071f3cbb07b.log 2>&1 &
+
+php -f /home/wwwroot/newblock/fire/buy0xd29600589f79780fe868955323fddb52cc6a7b43.php > /home/firelog/buy0xd29600589f79780fe868955323fddb52cc6a7b43.log 2>&1 &
+
+php -f /home/wwwroot/newblock/fire/buy0xdb040a376120609625b649ca86bb175ea8ed7d6f.php > /home/firelog/buy0xdb040a376120609625b649ca86bb175ea8ed7d6f.log 2>&1 &
+
+服务器节点启动
+俄罗斯
+nohup geth --rpc --rpcapi "web3, net, eth, db, shh, personal" --datadir /geth/ --syncmode "fast" --cache 2048 --maxpeers 50 &
+
+新加坡
+nohup geth --rpc --rpcapi "web3, net, eth, db, shh, personal" --datadir /geth/ --syncmode "fast" --cache 4096 --maxpeers 50 &
+
+查看节点同步状态 false为同步到当前节点
+geth --exec 'eth.syncing' attach ipc://geth/geth.ipc
+
+查看节点当前块数，对比https://etherscan.io/
+geth --exec 'eth.blockNumber' attach ipc://geth/geth.ipc
